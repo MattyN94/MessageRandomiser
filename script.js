@@ -1,17 +1,13 @@
 // Define different categories of phrases for fake-inspirational messages
-const openers = ["Embrace the chaos and", "Dance like nobody is watching and", "Believe in the magic of"];
-const actions = ["riding invisible unicorns", "discovering the secret of rainbow muffins", "finding joy in bubble wrap popping", "befriending intergalactic space hamsters"];
-const closers = ["because you're a glitter-covered superhero!", "in a world where llamas sing operas.", "and remember, the answer is always pancakes!"];
+const openers = ["Dunno, you might die", "You'll be fine today", "Answers unclear, please click again", "Buy a lottery ticket", "Watch out for Joel", "Just go back to bed"];
 
 // Function to generate a random fake-inspirational message
 function generateFakeInspirationalMessage() {
-    // Randomly select one phrase from each category
+    // Randomly select one phrase from the openers array
     const opener = getRandomElement(openers);
-    const action = getRandomElement(actions);
-    const closer = getRandomElement(closers);
-
-    // Combine the selected phrases to create the final fake-inspirational message
-    const message = `${opener} ${action}, ${closer}`;
+    
+    // Generate a random fake-inspirational message
+    const message = `${opener}`;
     
     return message;
 }
@@ -22,6 +18,17 @@ function getRandomElement(array) {
     return array[randomIndex];
 }
 
-// Generate and log a new fake-inspirational message each time the program is run
-const fakeInspirationalMessage = generateFakeInspirationalMessage();
-console.log(fakeInspirationalMessage);
+// Function to display the generated message on the webpage
+function displayMessage(message) {
+    const messageContainer = document.getElementById('message-container');
+    messageContainer.textContent = message;
+}
+
+// Event listener for the button click
+const generateButton = document.getElementById('generateButton');
+generateButton.addEventListener('click', function() {
+    // Generate a new fake-inspirational message
+    const fakeInspirationalMessage = generateFakeInspirationalMessage();
+    // Display the message on the webpage
+    displayMessage(fakeInspirationalMessage);
+});
